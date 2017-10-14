@@ -5,7 +5,7 @@
 
 @section ('head')
 
-<link rel="stylesheet" href="http://parsleyjs.org/src/parsley.css">
+
 
 {{-- Editor --}}
 <!-- Include Editor style. -->
@@ -66,6 +66,7 @@
 					<button class="btn btn-success ">
 						<i class="fa fa-check"></i> Update
 					</button>
+					<a href="{{route('posts.index')}}" type="button" class="btn btn-default pull-right"><i class="fa fa-caret-left" aria-hidden="true"></i> Back</a>
 				</div>
 			</div>
 		</div>
@@ -236,14 +237,13 @@
 
 		})
 
-	</script>
-	<script type="text/javascript">		
-		//filestyle
-		
-		//select2
-		$(".select2-multi").select2();
-		$(".select2-multi").select2().val({!! json_encode($post->tags->pluck('id')) !!}).trigger('change'); //get array of all id number and convert to json array 
-	</script>
+</script>
+<script type="text/javascript">		
+	//filestyle
+	//select2
+	$(".select2-multi").select2();
+	$(".select2-multi").select2().val({!! json_encode($post->tags->pluck('id')) !!}).trigger('change'); //get array of all id number and convert to json array 
+</script>
 
 
-	@stop	
+@stop	

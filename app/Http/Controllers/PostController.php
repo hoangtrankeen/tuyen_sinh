@@ -31,7 +31,7 @@ class PostController extends Controller
         // dd(compact('categories','allCategories'));
         // return view('manage/categories/categoryTreeview',compact('categories','allCategories'));
         
-        $posts = Post::orderBy('id','desc')->paginate(5);   
+        $posts = Post::orderBy('id','desc')->paginate(10);   
         return view('manage.posts.index',compact('categories','allCategories','posts'));
     }
 

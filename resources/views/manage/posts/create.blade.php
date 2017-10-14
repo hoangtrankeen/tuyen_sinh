@@ -178,7 +178,7 @@
 @stop
 
 @section('scripts')
-
+<script src="{{asset('js/slug.js')}}"></script>
 {{-- Editor --}}
 <!-- Include Editor JS files. -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.0/js/froala_editor.pkgd.min.js"></script>
@@ -197,7 +197,11 @@
 		}) 
 	}); 
 
-	$('.select2-multi').select2();
+
 </script>
-<script src="{{asset('js/slug.js')}}"></script>
+
+
+<script type="text/javascript">
+		$('.select2-multi').select2();
+</script>
 @stop	

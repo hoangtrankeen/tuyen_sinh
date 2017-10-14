@@ -34,7 +34,7 @@
 		<div class="col-md-9">
 			<div class="box box-primary">
 				<div class="box-header with-border">
-					<h3>Basic Information</h3>
+					<h3 class="box-title">Basic Information</h3>
 				</div>
 				<div class="box-body">
 					<div class="form-group">

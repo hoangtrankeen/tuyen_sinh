@@ -15,5 +15,9 @@ class Post extends Model
     {
     	return $this->belongsToMany('App\Tag','post_tag','post_id','tag_id');
     }
+    public function user()
+    {
+    	return $this->belongsTo('App\User','created_by','id');
+    }
   
 }

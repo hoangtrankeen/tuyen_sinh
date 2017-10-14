@@ -23,7 +23,7 @@ class Post extends Seeder
             	'slug' => $faker->slug,
             	'is_published' => $faker->biasedNumberBetween($min = 0, $max = 1, $function = 'sqrt'),
             	'is_featured' => $faker->biasedNumberBetween($min = 0, $max = 1, $function = 'sqrt'),
-            	'created_by' => $faker->biasedNumberBetween($min = 10, $max = 20, $function = 'sqrt'),
+            	'created_by' => $faker->biasedNumberBetween($min = 0, $max = 3, $function = 'sqrt'),
             	'created_at' => $faker->date,
                 'updated_at' => $faker->date,
             	

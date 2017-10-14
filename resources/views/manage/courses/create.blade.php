@@ -4,6 +4,7 @@
 @section('title','| Manage Courses')
 
 @section('head')
+<link rel="stylesheet" type="text/css" href="{{asset('parsley/parsley.css')}}">
 <link href="{{asset('date-picker/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
 @stop
 
@@ -23,14 +24,14 @@
 
 	</div>
 	<div class="panel-body">
-		<form method="POST" action="{{route('courses.store')}}" class="form">
+		<form method="POST" action="{{route('courses.store')}}" class="form" data-parsley-validate >
 			<div class="form-group">
 				<label name="name">Course Name:</label>
-				<input id="name" name="name" class="form-control">
+				<input id="name" name="name" class="form-control" data-parsley-required="true">
 			</div>
 			<div class="form-group">
 				<label name="year">Year:</label>
-				<input id="year" name="year"  class="form-control"></input>
+				<input id="year" name="year"  class="form-control" data-parsley-type="number" data-parsley-required="true"></input>
 			</div>
 			<div class="form-group">
 				<label for="exam_date" class=" control-label">Exam Date:</label>
@@ -39,8 +40,8 @@
 					<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 					<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
 				</div>
-				<input type="hidden" id="exam_date" value="" name="exam_date" /><br/>
-			</div>
+				<input type="hidden" id="exam_date" value="" name="exam_date" ><br/>
+			</div >
 		
 			 <button type="submit" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> 
 			 Save</button>
@@ -55,8 +56,7 @@
 @stop
 
 @section('scripts')
-
-
+<script type="text/javascript" src="{{asset('parsley/parsley.min.js')}}"></script>
 
 {{--Date Picker  --}}
 <script type="text/javascript" src="{{asset('date-picker/js/bootstrap-datetimepicker.js')}}" charset="UTF-8"></script>

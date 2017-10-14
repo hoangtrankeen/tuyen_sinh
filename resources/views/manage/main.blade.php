@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
  @include('manage/partials/_head') 
@@ -34,9 +34,3 @@
  
 </body>
 </html>
-
-<style type="text/css">
-body{
-  font-size: 15px !important;
-}
-</style>

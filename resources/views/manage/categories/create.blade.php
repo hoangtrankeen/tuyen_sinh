@@ -26,11 +26,11 @@
 		<div class="">
 
 			
-			<form method="POST" action="{{route('categories.store')}}" class="form">
+			<form method="POST" action="{{route('categories.store')}}" class="form" data-parsley-validate>
 			
 			<div class="form-group">
 				<label for="name">Category</label>
-				<input type="text" name="name" id="name"  class="form-control">
+				<input type="text" name="name" id="name"  class="form-control" >
 			</div>
 
 			<div class="form-group top-spacing">
@@ -62,5 +62,5 @@
 
 
 @section('scripts')
-
+<script type="text/javascript" src="{{route('js/parsley.min.js')}}"></script>
 @stop

@@ -1,8 +1,13 @@
-@section('head')
-<link href="{{asset('date-picker/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
-@stop
+
 
 @extends('manage/main')
+
+@section('head')
+<link href="{{asset('date-picker/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
+
+<link rel="stylesheet" type="text/css" href="{{asset('parsley/parsley.css')}}">
+@stop
+
 
 @section('content')
 <div class="panel panel-default">
@@ -20,16 +25,16 @@
   </div>
   <div class="panel-body">
     <div class="col-md-12" style="margin: auto;">
-      <form method="POST" action="{{route('courses.update',$course->id)}}" class="form">
+      <form method="POST" action="{{route('courses.update',$course->id)}}" class="form" data-parsley-validate>
         {{method_field('PUT')}}
         {{csrf_field()}}
         <div class="form-group">
           <label name="name">Course Name:</label>
-          <input type="text" id="name"  class="form-control" value="{{$course->name}}" name="name">
+          <input type="text" id="name"  class="form-control" value="{{$course->name}}" name="name" required>
         </div>
         <div class="form-group">
           <label name="year">Year:</label>
-          <input type="number" id="year" name="year"  class="form-control" value="{{$course->year}}"></input>
+          <input type="number" id="year" name="year"  class="form-control" value="{{$course->year}}"  data-parsley-type="number"></input>
         </div>
         <div class="form-group">
           <label for="exam_date" class="control-label">Exam Date:</label>
@@ -54,6 +59,10 @@
 @stop
 
 @section('scripts')
+
+
+<script type="text/javascript" src="{{asset('parsley/parsley.min.js')}}"></script>
+
 
 {{--Date Picker  --}}
 <script type="text/javascript" src="{{asset('date-picker/js/bootstrap-datetimepicker.js')}}" charset="UTF-8"></script>

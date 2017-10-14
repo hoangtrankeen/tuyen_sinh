@@ -44,7 +44,7 @@
 		<div class="well">
 			{!! Form::open(['route' => ['tags.update',$theTag->id], 'method'=> 'PUT'])!!}
 
-			<h4>Edit <b>{{$theTag->name}}</b></h4>
+			<h4>Edit #{{$tag->id}} <b></b></h4>
 
 			{!! Form::label('name','Name:')!!}
 			{!! Form::text('name',$theTag->name, ['class'=>'form-control'])!!}

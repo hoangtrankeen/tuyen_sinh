@@ -1,11 +1,11 @@
-@section('head')
-
-<link href="{{asset('date-picker/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
-
-@stop
 
 
 @extends('manage/main')
+@section('head')
+
+<link href="{{asset('date-picker/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
+<link rel="stylesheet" type="text/css" href="{{asset('parsley/parsley.css')}}">
+@stop
 
 @section('content')
 <div class="panel panel-default">
@@ -25,10 +25,9 @@
 		<div class="row">
 			<div class="col-md-10">
 
-				<form method="POST" action="{{route('students.store')}}" class="form-horizontal" enctype="multipart/form-data">
+				<form method="POST" action="{{route('students.store')}}" class="form-horizontal" enctype="multipart/form-data" data-parsley-validate>
 					{{csrf_field()}}
 					<div class="col-md-12 top-spacing2">
-						<hr>
 						<h4 class="text-primary">Basic Information</h4>
 						<hr>
 					</div>
@@ -39,12 +38,12 @@
 							</div>
 						</div>
 
-						<div class="col-md-10 col-xs-12 top-spacing2">
+						<div class="col-md-10 col-xs-12 ">
 							<div class="form-group">
 
 								<label for="name" class=" control-label col-sm-3">Name:</label>
 								<div class="col-sm-9">
-									<input id="name" name="name" class="form-control">
+									<input id="name" name="name" class="form-control" required>
 								</div>
 
 							</div>
@@ -64,14 +63,14 @@
 							<div class="form-group "> 
 								<label for="address" class=" control-label col-sm-3">Address:</label>
 								<div class="col-sm-9">
-									<input  type="text" id="address" name="address" class="form-control"></input>
+									<input  type="text" id="address" name="address" class="form-control" required></input>
 								</div> 
 
 							</div>
 							<div class="form-group "> 
 								<label for="province_id" class=" control-label col-sm-3">Native Place:</label> 
 								<div class="col-sm-9">
-									<select  type="text" id="province_id" name="province_id" class="form-control">
+									<select  type="text" id="province_id" name="province_id" class="form-control" required>
 										<option value="">Select...</option>
 										@foreach($provinces as $province )
 											<option value="{{$province->id}}">{{$province->name}}</option>
@@ -83,14 +82,14 @@
 							<div class="form-group "> 
 								<label for="email" class=" control-label col-sm-3">Email:</label>
 								<div class="col-sm-9">
-									<input  type="text" id="email" name="email" class="form-control"></input>
+									<input  type="text" id="email" name="email" class="form-control" required></input>
 								</div> 
 
 							</div>
 							<div class="form-group "> 
 								<label for="phone" class=" control-label col-sm-3">Phone:</label> 
 								<div class="col-sm-9">
-									<input  type="tel" id="phone" name="phone" class="form-control"></input>
+									<input  type="tel" id="phone" name="phone" class="form-control" required></input>
 								</div>
 							</div>
 							<div class="form-group top-spacing">
@@ -230,9 +229,6 @@
 			
 		</div>
 
-
-
-
 	</div>
 
 </div>
@@ -240,6 +236,9 @@
 @stop
 
 @section('scripts')
+
+{{-- Parsley --}}
+<script type="text/javascript" src="{{asset('parsley/parsley.min.js')}}"></script>
 
 
 {{--Date Picker  --}}

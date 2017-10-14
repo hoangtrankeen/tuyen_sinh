@@ -17,23 +17,46 @@
 	</div>
 	<div class="panel-body">
 		
-		<table class="table">
-			<thead>
+		<table class="table table-success">
+			<thead class="success">
 				<th>#</th>
 				<th>Title</th>
-				<th>Body</th>
+				<th>Author</th>
+				<th>Status</th>
 				<th>Crated At</th>
-				<th></th>
+				<th>Modifed At</th>
+				<th>Action</th>
 			</thead>
 			<tbody>
-
+				@php
+					$stt = 1
+				@endphp
 				@foreach ($posts as $post)
 				<tr>
-					<th>{{ $post->id }}</th>
-					<td>{{ $post->title }}</td>
-					<td>{{ substr(strip_tags($post->body), 0, 50) }}{{ strlen(strip_tags($post->body)) > 50 ?'...':'' }}</td>
-					{{-- <td>{{ date('M j Y',strtotime($post->created_at)) }}</td>--}}
-					<td><i class="fa fa-clock-o" aria-hidden="true"></i> {{ $post->created_at->format('j/m/Y H:ia') }}</td>
+					<th>{{ $stt++ }}</th>
+					<td><a href="{{route('posts.edit',$post->id)}}">
+						{{ substr(strip_tags($post->title), 0, 100) }}{{ strlen(strip_tags($post->title)) > 100 ?'...':'' }}
+					</a><br>
+						<small>Category: {{$post->category->name}}</small>
+					</td>
+					<td>{{$post->user->name}}</td>
+					<td>
+						@if($post->is_published)
+							<span class="label label-info">Activated</span><br>
+
+							@if($post->is_featured)
+								
+								<span class="label label-primary">Featured</span>
+
+							@endif
+						@else
+							<span class="label label-default">Disabled</span><br>
+						
+						@endif
+					</td>
+					
+					<td>{{ $post->created_at->format('j/m/Y ') }}<br>{{ $post->created_at->format(' H:ia') }}</td>
+					<td>{{ $post->updated_at->format('j/m/Y ') }}<br>{{ $post->updated_at->format(' H:ia') }}</td>
 					<td>
 						<a class="btn btn-info btn-sm" href="{{route('posts.edit',$post->id)}}"><i class="fa fa-edit"></i>Edit</a>
 
@@ -58,9 +81,9 @@
 @stop
 
 @section('scripts')
-  
+
 <script>
-   function confirmDelete()
+	function confirmDelete()
 	{
 		return confirm("Do you want to delete this menu?");
 	}

@@ -89,6 +89,7 @@ class StudentController extends Controller
         $student->date_issue = $dateissue;
         $student->place_issue = $request->place_issue;
         //image
+        $student->status = $request->status;
         $student->work_place_id = $request->work_place_id;
         $student->exam_place_id = $request->exam_place_id;
         $student->practice_opt = $request->practice_opt;

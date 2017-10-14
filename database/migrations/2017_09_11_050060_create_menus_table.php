@@ -23,7 +23,7 @@ class CreateMenusTable extends Migration
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('set null');
 
             $table->string('url')->nullable();
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->boolean('status');
             $table->integer('parent_id')->nullable();
             $table->integer('order');

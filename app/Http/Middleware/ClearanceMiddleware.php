@@ -20,8 +20,7 @@ class ClearanceMiddleware {
 
         if ($request->is('dashboard/posts')) {
             if (!Auth::user()->hasPermissionTo('Edit Post')) {
-                // abort('401');
-               return  redirect('dashboard');
+                abort('401');
             } else {
                 return $next($request);
             }
