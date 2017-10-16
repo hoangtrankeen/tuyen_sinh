@@ -23,7 +23,7 @@ class AdminMiddleware
             //     abort('401');
             // }
 
-            if (!Auth::user()->hasRole('Admin')) {
+            if (!(Auth::user()->hasRole('Admin')|| Auth::user()->hasRole('Manager') || Auth::user()->hasRole('Editor'))) {
                 abort('401');
             }
         }

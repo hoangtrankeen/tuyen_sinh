@@ -17,15 +17,18 @@
 	</div>
 	<div class="panel-body">
 		
-		<table class="table table-success">
+		<table class="table table-success table-striped table-bordered">
 			<thead class="success">
-				<th>#</th>
-				<th>Title</th>
-				<th>Author</th>
-				<th>Status</th>
-				<th>Crated At</th>
-				<th>Modifed At</th>
-				<th>Action</th>
+				<tr class="warning">
+					<th>#</th>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Status</th>
+					<th>Crated At</th>
+					<th>Modifed At</th>
+					<th>Action</th>
+				</tr>
+				
 			</thead>
 			<tbody>
 				@php
@@ -37,7 +40,7 @@
 					<td><a href="{{route('posts.edit',$post->id)}}">
 						{{ substr(strip_tags($post->title), 0, 100) }}{{ strlen(strip_tags($post->title)) > 100 ?'...':'' }}
 					</a><br>
-						<small>Category: {{$post->category->name}}</small>
+						<small>Category: {{($post->category)? $post->category->name: ''}}</small>
 					</td>
 					<td>{{$post->user->name}}</td>
 					<td>

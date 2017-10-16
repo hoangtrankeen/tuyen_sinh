@@ -1,9 +1,10 @@
 @extends('manage/main')
 
+@section('title','| Edit Menu')
 @section('head')
+<link rel="stylesheet" type="text/css" href="{{asset('parsley/parsley.css')}}">
 
-<link rel="stylesheet" href="http://parsleyjs.org/src/parsley.css">
-
+@stop
 @section('style')
 <style type="text/css">
 .select2-results__options {
@@ -33,7 +34,7 @@
 
 @section('content')
 {{-- {{dd($thismenu->childs->where('id','!=',$thismenu->id))}} --}}
-<form method="POST" action="{{route('menus.update',$thismenu->id)}}" class="form">
+<form method="POST" action="{{route('menus.update',$thismenu->id)}}" class="form" data-parsley-ui-enabled="false" data-parsley-validate>
 	{{method_field('PUT')}}
 	{{csrf_field()}}
 	<div class="row" id="slug">
@@ -45,11 +46,11 @@
 				<div class="box-body">
 					<div class="form-group">
 						<label for="name">Menu</label>
-						<input type="text" name="name" id="name"  class="form-control"  v-model="title">
+						<input type="text" name="name" id="name"  class="form-control"  v-model="title" required>
 					</div>
 					<div class="form-group">
 						<label>Slug</label>
-						<input type="text" name="slug" v-bind:value="slugConvert"  v-on:keyup="slugConvert" class="form-control" readonly>
+						<input type="text" name="slug" v-bind:value="slugConvert"  v-on:keyup="slugConvert" class="form-control" readonly >
 					</div>
 					<div class="form-group">
 						<label for="category_id">Category</label>
@@ -95,7 +96,7 @@
 					<div class="form-group">
 						<label for="parent_id">Parent Menu</label>
 						<select class="form-control" name="parent_id" id="parent_id">
-							<option value="0">Chose Parent Menu</option>
+							<option value="0">Parent</option>
 							@foreach($parents as $parent)
 
 							<option value="{{$parent->id}}" 
@@ -210,8 +211,11 @@
 		})
 
 	</script>
-	<script type="text/javascript">
 
+	{{-- Parsley --}}
+	<script type="text/javascript" src="{{asset('parsley/parsley.min.js')}}"></script>
+
+	<script type="text/javascript">
 	// Search option
 	$('#post_id').select2();
 	// select option handle, dusable all when slelect is changed

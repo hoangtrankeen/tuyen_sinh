@@ -1,6 +1,8 @@
 
 
 @extends('manage/main')
+
+@section('title','| Create Student')
 @section('head')
 
 <link href="{{asset('date-picker/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
@@ -25,7 +27,7 @@
 		<div class="row">
 			<div class="col-md-10">
 
-				<form method="POST" action="{{route('students.store')}}" class="form-horizontal" enctype="multipart/form-data" data-parsley-validate>
+				<form method="POST" action="{{route('students.store')}}" class="form-horizontal" enctype="multipart/form-data" data-parsley-validate data-parsley-ui-enabled="false">
 					{{csrf_field()}}
 					<div class="col-md-12 top-spacing2">
 						<h4 class="text-primary">Basic Information</h4>
@@ -41,14 +43,14 @@
 						<div class="col-md-10 col-xs-12 ">
 							<div class="form-group">
 
-								<label for="name" class=" control-label col-sm-3">Name:</label>
+								<label for="name" class=" control-label col-sm-3">Name*</label>
 								<div class="col-sm-9">
 									<input id="name" name="name" class="form-control" required>
 								</div>
 
 							</div>
 							<div class="form-group">
-								<label for="birth" class="col-sm-3 control-label">Birth</label>
+								<label for="birth" class="col-sm-3 control-label">Birth*</label>
 								<div class="col-sm-9">
 									<div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="birth" data-link-format="yyyy-mm-dd">
 										<input class="form-control" size="16" type="text" value="" readonly>
@@ -61,14 +63,14 @@
 							</div>
 
 							<div class="form-group "> 
-								<label for="address" class=" control-label col-sm-3">Address:</label>
+								<label for="address" class=" control-label col-sm-3">Address*</label>
 								<div class="col-sm-9">
 									<input  type="text" id="address" name="address" class="form-control" required></input>
 								</div> 
 
 							</div>
 							<div class="form-group "> 
-								<label for="province_id" class=" control-label col-sm-3">Native Place:</label> 
+								<label for="province_id" class=" control-label col-sm-3">Native Place*</label> 
 								<div class="col-sm-9">
 									<select  type="text" id="province_id" name="province_id" class="form-control" required>
 										<option value="">Select...</option>
@@ -80,20 +82,20 @@
 
 							</div>
 							<div class="form-group "> 
-								<label for="email" class=" control-label col-sm-3">Email:</label>
+								<label for="email" class=" control-label col-sm-3">Email*</label>
 								<div class="col-sm-9">
 									<input  type="text" id="email" name="email" class="form-control" required></input>
 								</div> 
 
 							</div>
 							<div class="form-group "> 
-								<label for="phone" class=" control-label col-sm-3">Phone:</label> 
+								<label for="phone" class=" control-label col-sm-3">Phone*</label> 
 								<div class="col-sm-9">
 									<input  type="tel" id="phone" name="phone" class="form-control" required></input>
 								</div>
 							</div>
 							<div class="form-group top-spacing">
-								<label for="image" class=" control-label col-sm-3">Upload Profile Image:</label>
+								<label for="image" class=" control-label col-sm-3">Upload Profile Image</label>
 								<div class="col-sm-9">
 									<input type="file" id="profile_file" name="image" class="filestyle" data-buttonText="Find file">
 								</div>			
@@ -110,14 +112,14 @@
 
 					</div>
 					<div class="form-group"> 
-						<label for="identification" class=" control-label col-sm-3">Identification Number:</label> 
+						<label for="identification" class=" control-label col-sm-3">Identification Number</label> 
 						<div class="col-sm-9">
 							<input  type="text" id="identification" name="identification" class="form-control"></input>
 						</div>
 
 					</div>
 					<div class="form-group "> 
-						<label for="place_issue" class=" control-label col-sm-3">Place Issue:</label>
+						<label for="place_issue" class=" control-label col-sm-3">Place Issue</label>
 						<div class="col-sm-9">
 							<input  type="text" id="place_issue" name="place_issue" class="form-control"></input>
 						</div>
@@ -140,7 +142,7 @@
 
 					<div class="form-group top-spacing ident-field" >
 
-						<label for="ident_image" class=" control-label col-sm-3">Upload Identify Image:</label>
+						<label for="ident_image" class=" control-label col-sm-3">Upload Identify Image</label>
 						<div class="col-sm-9">
 							<input type="file" id="ident_file" name="ident_image" class="filestyle" data-buttonText="Find file">
 						</div>
@@ -154,7 +156,7 @@
 					</div>
 
 					<div class="form-group "> 
-						<label for="work_place" class=" control-label col-sm-3">Work Place:</label> 
+						<label for="work_place" class=" control-label col-sm-3">Work Place</label> 
 						<div class="col-sm-9">
 							<select name="work_place_id" class="form-control" id="work_place">
 								<option value="">Select...</option>
@@ -165,7 +167,7 @@
 
 					</div>
 					<div class="form-group "> 
-						<label for="exam_place" class=" control-label col-sm-3">Exam Place:</label> 
+						<label for="exam_place" class=" control-label col-sm-3">Exam Place</label> 
 						<div class="col-sm-9">
 							<select name="exam_place_id" class="form-control" id="exam_place">
 								<option value="">Select...</option>
@@ -176,7 +178,7 @@
 
 					</div>
 					<div class="form-group "> 
-						<label for="practice_opt" class=" control-label col-sm-3">Practice Option:</label>
+						<label for="practice_opt" class=" control-label col-sm-3">Practice Option</label>
 						<div class="col-sm-9"> 
 							<select name="practice_opt" class="form-control" id="practice_opt">
 								<option value="">Select...</option>
@@ -187,7 +189,7 @@
 
 					</div>
 					<div class="form-group "> 
-						<label for="payment_status" class=" control-label col-sm-3">Payment Status:</label>
+						<label for="payment_status" class=" control-label col-sm-3">Payment Status</label>
 						<div class="col-sm-9">
 							<select name="payment_status" class="form-control" id="payment_status">
 								<option value="">Select...</option>
@@ -198,7 +200,7 @@
 
 					</div>
 					<div class="form-group "> 
-						<label for="course_id" class=" control-label col-sm-3">Course:</label>
+						<label for="course_id" class=" control-label col-sm-3">Course</label>
 
 						<div class="col-sm-9">
 							<select name="course_id" class="form-control" id="course_id">
@@ -211,7 +213,7 @@
 
 					</div>
 					<div class="form-group "> 
-						<label for="expense" class=" control-label col-sm-3">Course Fee:</label> 
+						<label for="expense" class=" control-label col-sm-3">Course Fee</label> 
 						<div class="col-sm-9">
 							<input  type="number" id="expense" name="expense" class="form-control"></input>
 						</div>

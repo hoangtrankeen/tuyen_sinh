@@ -1,6 +1,6 @@
 @extends('manage/main')
 
-
+@section('title','| Manage Courses')
 @section('content')
 
 <!-- /.box -->
@@ -29,9 +29,10 @@
         <th>Created At</th>
         <th>Actions</th>
       </tr>
+      @php $stt = 1 @endphp
       @foreach ($courses as $course)
       <tr>
-        <td>{{$course->id}}</td>
+        <td>{{$stt++}}</td>
         <td>{{$course->name}}</td>
         <td>{{$course->year}}</td>
         <td>{{date('d F, Y', strtotime($course->exam_date))}}</td>

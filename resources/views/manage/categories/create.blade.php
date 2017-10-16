@@ -1,9 +1,10 @@
 
 @extends('manage/main')
 
+@section('title','| Create Category')
 
 @section('head')
-
+<link rel="stylesheet" type="text/css" href="{{asset('parsley/parsley.css')}}">
 @stop
 @section('title','| Create Category')
 @section('content')	
@@ -26,11 +27,11 @@
 		<div class="">
 
 			
-			<form method="POST" action="{{route('categories.store')}}" class="form" data-parsley-validate>
+			<form method="POST" action="{{route('categories.store')}}" class="form" >
 			
 			<div class="form-group">
 				<label for="name">Category</label>
-				<input type="text" name="name" id="name"  class="form-control" >
+				<input type="text" name="name" id="name"  class="form-control" required >
 			</div>
 
 			<div class="form-group top-spacing">
@@ -62,5 +63,5 @@
 
 
 @section('scripts')
-<script type="text/javascript" src="{{route('js/parsley.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('parsley/parsley.min.js')}}"></script>
 @stop

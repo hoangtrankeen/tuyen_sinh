@@ -1,5 +1,7 @@
 @extends('manage/main')
 
+@section('title','| Manage Students')
+
 
 @section('content')
 
@@ -26,9 +28,10 @@
       <th></th>
       <th>Actions</th>
     </tr>
+    @php $stt=1 @endphp
     @foreach ($students as $student)
     <tr>
-      <td>{{$student->id}}</td>
+      <td>{{$stt++}}</td>
       <td>{{$student->name}}</td>
       <td>{{$student->email}}</td>
       <td>{{-- {{$student->created_at->toFormatedDateString()}} --}}</td>
@@ -61,7 +64,7 @@
 <script>
   function confirmDelete()
   {
-    return confirm("Do you want to delete this menu?");
+    return confirm("Do you want to delete this student?");
   }
   
 </script>

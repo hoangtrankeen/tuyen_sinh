@@ -22,8 +22,8 @@
 @section('content')
 
 <form method="POST" action="{{route('posts.store')}}" accept-charset="UTF-8"
-  enctype="multipart/form-data">
-  {{csrf_field()}}
+enctype="multipart/form-data">
+{{csrf_field()}}
 <div class="row">
 	<div class="col-md-9">
 		<div class="box box-primary">
@@ -34,7 +34,7 @@
 				
 				<div class="form-group">
 					<label for="title">Title</label>
-					<input type="text" name="title" class="form-control" v-model:value="title">
+					<input type="text" name="title" class="form-control" v-model:value="title" required>
 				</div>
 				
 				<div class="form-group">
@@ -148,6 +148,11 @@
 					<option value="">Select...</option>
 					@foreach($categories as $category)
 					<option value="{{ $category->id}}">{{ $category->name}}</option>
+					@if(count($category->childs))
+
+					@include('manage/categories/child_create',['childs' => $category->childs, 'html'=>''])
+
+					@endif
 					@endforeach
 				</select>
 			</div>
@@ -202,6 +207,6 @@
 
 
 <script type="text/javascript">
-		$('.select2-multi').select2();
+	$('.select2-multi').select2();
 </script>
 @stop	

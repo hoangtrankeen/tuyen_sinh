@@ -1,7 +1,9 @@
 @extends('manage/main')
 
-@section('head')
+@section('title','| Manage Menu')
 
+@section('head')
+<link rel="stylesheet" type="text/css" href="{{asset('parsley/parsley.css')}}">
 @stop
 
 @section('content')
@@ -21,7 +23,7 @@
 	<div class="panel-body">
 		<div class="">
 			<div class="">
-				<table class=" table table-striped  " >
+				<table class=" table table-striped table-bordered " >
 					<thead>
 						<th>#</th>
 						<th>Menu</th>

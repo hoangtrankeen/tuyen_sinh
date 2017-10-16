@@ -24,6 +24,9 @@ Auth::routes();
 // Route::prefix('dashboard')->middleware('role:superadministrator|administrator|editor|author|contributor|supporter|subscriber')->group(function(){
 Route::prefix('dashboard')->group(function(){
 	Route::get('/', 'ManageController@index');
+
+	Route::get('/deny','ManageController@denypage');
+
 	Route::resource('/users', 'UserController');
 	
 	Route::resource('roles', 'RoleController');

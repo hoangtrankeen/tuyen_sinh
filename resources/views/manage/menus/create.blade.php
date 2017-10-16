@@ -1,8 +1,11 @@
 @extends('manage/main')
 
+
+@section('title','| Create Menu')
 @section('head')
 
-<link rel="stylesheet" href="http://parsleyjs.org/src/parsley.css">
+<link rel="stylesheet" type="text/css" href="{{asset('parsley/parsley.css')}}">
+
 
 @section('style')
 <style type="text/css">
@@ -28,7 +31,7 @@
 @stop
 
 @section('content')
-<form method="POST" action="{{route('menus.store')}}" class="form">
+<form method="POST" action="{{route('menus.store')}}" class="form" data-parsley-ui-enabled="false" data-parsley-validate>
 	{{csrf_field()}}
 	<div class="row" id="slug">
 		<div class="col-md-9">
@@ -39,7 +42,7 @@
 				<div class="box-body">
 					<div class="form-group">
 						<label for="name">Menu</label>
-						<input type="text" name="name" id="name"  class="form-control" v-model:value="title">
+						<input type="text" name="name" id="name"  class="form-control" v-model:value="title" required>
 					</div>
 
 					<div class="form-group">
@@ -49,8 +52,8 @@
 
 					<div class="form-group">
 						<label for="category_id">Category</label>
-						<select class="form-control chose_field twofield" name="category_id" id="category_id">
-							<option value="">Select...</option>
+						<select class="form-control chose_field twofield" name="category_id" id="category_id" >
+							<option value="">Select...</option >
 							@foreach($categories as $category)
 
 							<option value="{{$category->id}}">{{$category->name}}</option>
@@ -66,7 +69,7 @@
 
 					<div class="form-group">
 						<label for="post_id">Post</label>
-						<select class="form-control chose_field twofield" name="post_id" id="post_id">
+						<select class="form-control chose_field twofield" name="post_id" id="post_id" >
 							<option value="">Select..</option>
 							@foreach($posts as $post)
 							<option value="{{$post->id}}">{{$post->title}}</option>
@@ -78,7 +81,7 @@
 					<div class="form-group">
 						<label for="url">Url</label>
 						<div class="btn-group" style="width:100% ">
-							<input type="text" name="url" class="form-control chose_field"  id="url">
+							<input type="text" name="url" class="form-control chose_field"  id="url" >
 							<span id="url-clear" class="glyphicon glyphicon-remove-circle"></span>
 						</div>
 					</div>
@@ -86,7 +89,7 @@
 					<div class="form-group">
 						<label for="parent_id">Parent Menu</label>
 						<select class="form-control" name="parent_id" id="parent_id">
-							<option value="0">Select..</option>
+							<option value="0">Parent</option>
 							@foreach($parents as $parent)
 
 							<option value="{{$parent->id}}">{{$parent->name}}</option>
@@ -138,7 +141,7 @@
 					</div>
 				</div>
 				<div class="box-body">
-					<input type="number" name="order" min="1" id="menu_order" class="form-control">
+					<input type="number" name="order" min="1" id="menu_order" class="form-control" required>
 				</div>
 			</div>
 		</div>	
@@ -152,6 +155,9 @@
 
 {{-- Slug handler --}}
 <script src="{{asset('js/slug.js')}}"></script>
+
+{{-- Parsley --}}
+<script type="text/javascript" src="{{asset('parsley/parsley.min.js')}}"></script>
 
 <script type="text/javascript">
 	

@@ -30,18 +30,18 @@
 				
 				<div class="form-group">
 					<label for="title">Title</label>
-					<input type="text" name="title" class="form-control" v-model:value="title">
+					<input type="text" name="title" class="form-control" v-model:value="title" required>
 				</div>
 				
 				<div class="form-group">
 					<label for="sub_title">Subtitle</label>
-					<input type="text" name="sub_title" id="sub_title" class="form-control" value="{{$post->sub_title}}">
+					<input type="text" name="sub_title" id="sub_title" class="form-control" value="{{$post->sub_title}}" required>
 				</div>
 
 
 				<div class="form-group">
 					<label>Slug</label>
-					<input type="text" name="slug" v-bind:value="slugConvert"  v-on:keyup="slugConvert" class="form-control" readonly>
+					<input type="text" name="slug" v-bind:value="slugConvert"  v-on:keyup="slugConvert" class="form-control" readonly >
 				</div>
 				
 
@@ -134,10 +134,15 @@
 				</div>
 			</div>
 			<div class="box-body">
-				<select class="form-control" name="category_id">
+				<select class="form-control" name="category_id" required>
 					<option value="">Select...</option>
 					@foreach($categories as $category)
 					<option value="{{ $category->id}}" {{($category->id == $post->category_id) ? 'selected':''}}>{{ $category->name}}</option>
+					@if(count($category->childs))
+
+					@include('manage/posts/child_cat_edit',['childs' => $category->childs, 'html'=>''])
+
+					@endif
 					@endforeach
 				</select>
 			</div>
@@ -237,8 +242,8 @@
 
 		})
 
-</script>
-<script type="text/javascript">		
+	</script>
+	<script type="text/javascript">		
 	//filestyle
 	//select2
 	$(".select2-multi").select2();

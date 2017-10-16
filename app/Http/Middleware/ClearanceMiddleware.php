@@ -18,9 +18,12 @@ class ClearanceMiddleware {
             return $next($request);
         }
 
+
+
         if ($request->is('dashboard/posts')) {
-            if (!Auth::user()->hasPermissionTo('Edit Post')) {
-                abort('401');
+            if (!Auth::user()->hasPermissionTo('Manage Post')) {
+                
+                return redirect('/dashboard/deny');
             } else {
                 return $next($request);
             }

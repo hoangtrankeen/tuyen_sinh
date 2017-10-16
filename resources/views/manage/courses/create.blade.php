@@ -1,8 +1,8 @@
 
 @extends('manage/main')
 
-@section('title','| Manage Courses')
-
+@section('title','| Create Course')
+	
 @section('head')
 <link rel="stylesheet" type="text/css" href="{{asset('parsley/parsley.css')}}">
 <link href="{{asset('date-picker/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
@@ -24,14 +24,14 @@
 
 	</div>
 	<div class="panel-body">
-		<form method="POST" action="{{route('courses.store')}}" class="form" data-parsley-validate >
+		<form method="POST" action="{{route('courses.store')}}" class="form" data-parsley-validate data-parsley-ui-enabled="false">>
 			<div class="form-group">
 				<label name="name">Course Name:</label>
 				<input id="name" name="name" class="form-control" data-parsley-required="true">
 			</div>
 			<div class="form-group">
 				<label name="year">Year:</label>
-				<input id="year" name="year"  class="form-control" data-parsley-type="number" data-parsley-required="true"></input>
+				<input type="number" id="year" name="year"  class="form-control" data-parsley-type="number" data-parsley-required="true"></input>
 			</div>
 			<div class="form-group">
 				<label for="exam_date" class=" control-label">Exam Date:</label>

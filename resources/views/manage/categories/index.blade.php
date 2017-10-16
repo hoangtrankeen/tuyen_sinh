@@ -1,5 +1,7 @@
 @extends('manage/main')
 
+
+@section('title','| Manage Categories')
 @section('head')
 
 @stop
@@ -23,7 +25,7 @@
 	<div class="panel-body">
 		<div class="">
 			<div class="">
-				<table class=" table table-striped" >
+				<table class=" table table-striped table-bordered" >
 					<thead>					
 						<th>Category</th>
 						<th>Action</th>

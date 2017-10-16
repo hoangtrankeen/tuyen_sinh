@@ -14,4 +14,9 @@ class ManageController extends Controller
     {
     	return view('manage.main');
     } 
+
+    public function denypage()
+    {
+    	return view('manage.deny');
+    } 
 }

@@ -34,15 +34,6 @@ class PostController extends Controller
         $posts = Post::orderBy('id','desc')->paginate(10);   
         return view('manage.posts.index',compact('categories','allCategories','posts'));
     }
-
-    public function showPostsCat($cat_id){  // Return all posts that related to a Category
-        $thiscat = Category::find($cat_id); 
-        $categories = Category::where('parent_id',0)->get();   
-        $posts = $thiscat->posts()->orderBy('id','desc')->paginate(8);
-        return view('manage/posts/postscat',compact('categories','thiscat','posts'));
-    }
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -51,7 +42,7 @@ class PostController extends Controller
     public function create()
     {   
         $tags = Tag::all();
-        $categories = Category::all();
+        $categories = Category::where('parent_id','=',0)->get();
         return view('manage/posts/create')->withCategories($categories)->withTags($tags);
     }
     /**
@@ -103,7 +94,7 @@ class PostController extends Controller
         Session::flash('success', 'The post was successfully save!');
 
         //redirect to another page
-        return redirect()->route('posts.show', $post->id);
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -129,7 +120,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::find($id); 
-        $categories =Category::all();
+        $categories = Category::where('parent_id','=',0)->get();
         $tags = Tag::all();
         $tags2 = array();
         foreach($tags as $tag){

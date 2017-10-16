@@ -1,9 +1,9 @@
 
 @extends('manage/main')
 
-
+@section('title','| Edit Category')
 @section('head')
-
+<link rel="stylesheet" type="text/css" href="{{asset('parsley/parsley.css')}}">
 @stop
 @section('title','| Edit Category')
 @section('content')	
@@ -24,13 +24,13 @@
 
 		<div class="">
 
-			<form method="POST" action="{{route('categories.update',$thiscat->id)}}" class="form">
+			<form method="POST" action="{{route('categories.update',$thiscat->id)}}" class="form" data-parsley-validate>
 				{{method_field('PUT')}}
 				{{csrf_field()}}
 
 				<div class="form-group">
 					<label for="name">Category</label>
-					<input type="text" name="name" id="name" value="{{$thiscat->name}}" class="form-control">
+					<input type="text" name="name" id="name" value="{{$thiscat->name}}" class="form-control" required>
 				</div>
 
 				<div class="form-group top-spacing">
@@ -69,5 +69,5 @@
 
 
 @section('scripts')
-
+<script type="text/javascript" src="{{asset('parsley/parsley.min.js')}}"></script>
 @stop

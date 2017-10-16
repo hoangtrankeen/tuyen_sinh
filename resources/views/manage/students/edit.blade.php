@@ -1,10 +1,14 @@
-@section('head')
-
-<link href="{{asset('date-picker/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
-@stop
 
 
 @extends('manage/main')
+
+@section('title','| Edit Student')
+@section('head')
+
+<link rel="stylesheet" type="text/css" href="{{asset('parsley/parsley.css')}}">
+
+<link href="{{asset('date-picker/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
+@stop
 
 @section('content')
 <div class="panel panel-default">
@@ -23,7 +27,7 @@
 		<div class="row">
 			<div class="col-md-10">
 
-				<form method="POST" action="{{route('students.update',$student->id)}}" class="form-horizontal" enctype="multipart/form-data">
+				<form method="POST" action="{{route('students.update',$student->id)}}" class="form-horizontal" enctype="multipart/form-data"  data-parsley-validate data-parsley-ui-enabled="false">
 					{{method_field('PUT')}}
 					{{csrf_field()}}
 					
@@ -45,14 +49,14 @@
 						<div class="col-md-10 col-xs-12 ">
 							<div class="form-group">
 
-								<label for="name" class=" control-label col-sm-3">Name:</label>
+								<label for="name" class=" control-label col-sm-3">Name*</label>
 								<div class="col-sm-9">
-									<input id="name" name="name" class="form-control" value="{{$student->name}}">
+									<input id="name" name="name" class="form-control" value="{{$student->name}}" required>
 								</div>
 
 							</div>
 							<div class="form-group">
-								<label for="birth" class="col-sm-3 control-label">Birth</label>
+								<label for="birth" class="col-sm-3 control-label">Birth*</label>
 								<div class="col-sm-9">
 									<div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="birth" data-link-format="yyyy-mm-dd">
 										<input class="form-control" size="16" type="text" value="{{date('d F, Y', strtotime($student->birth))}}" readonly>
@@ -65,16 +69,16 @@
 							</div>
 						
 							<div class="form-group "> 
-								<label for="address" class=" control-label col-sm-3">Address:</label>
+								<label for="address" class=" control-label col-sm-3">Address*</label>
 								<div class="col-sm-9">
-									<input  type="text" id="address" name="address" class="form-control" value="{{$student->address}}"></input>
+									<input  type="text" id="address" name="address" class="form-control" value="{{$student->address}}" required>
 								</div> 
 
 							</div>
 							<div class="form-group "> 
-								<label for="province_id" class=" control-label col-sm-3">Native Place:</label> 
+								<label for="province_id" class=" control-label col-sm-3">Native Place*</label> 
 								<div class="col-sm-9">
-									<select  type="text" id="province_id" name="province_id" class="form-control">
+									<select  type="text" id="province_id" name="province_id" class="form-control" required>
 										<option value="">Select...</option>
 										@foreach($provinces as $province )
 											<option value="{{$province->id}}" {{($province->id == $student->province_id)?'selected':''}}>{{$province->name}}</option>
@@ -84,20 +88,20 @@
 
 							</div>
 							<div class="form-group "> 
-								<label for="email" class=" control-label col-sm-3">Email:</label>
+								<label for="email" class=" control-label col-sm-3">Email*</label>
 								<div class="col-sm-9">
-									<input  type="text" id="email" name="email" class="form-control" value="{{$student->email}}" ></input>
+									<input  type="text" id="email" name="email" class="form-control" value="{{$student->email}}"  required>
 								</div>  
 
 							</div>
 							<div class="form-group "> 
-								<label for="phone" class=" control-label col-sm-3">Phone:</label> 
+								<label for="phone" class=" control-label col-sm-3">Phone*</label> 
 								<div class="col-sm-9">
-									<input  type="text" id="phone" name="phone" class="form-control" value="{{$student->phone}}" ></input>
+									<input  type="text" id="phone" name="phone" class="form-control" value="{{$student->phone}}" required>
 								</div>
 							</div>
 							<div class="form-group top-spacing">
-								<label for="image" class=" control-label col-sm-3">Change Profile Image:</label>
+								<label for="image" class=" control-label col-sm-3">Change Profile Image</label>
 								<div class="col-sm-9">
 									<input type="file" id="profile_file" name="image" class="filestyle" data-buttonText="Find file">
 								</div>			
@@ -114,21 +118,21 @@
 
 					</div>
 					<div class="form-group"> 
-						<label for="identification" class=" control-label col-sm-3">Identification Number:</label> 
+						<label for="identification" class=" control-label col-sm-3">Identification Number</label> 
 						<div class="col-sm-9">
 							<input  type="text" id="identification" name="identification" class="form-control" value="{{$student->identification}}"></input>
 						</div>
 
 					</div>
 					<div class="form-group "> 
-						<label for="place_issue" class=" control-label col-sm-3">Place Issue:</label>
+						<label for="place_issue" class=" control-label col-sm-3">Place Issue</label>
 						<div class="col-sm-9">
 							<input  type="text" id="place_issue" name="place_issue" class="form-control" value="{{$student->place_issue}}"></input>
 						</div>
 
 					</div>
 					<div class="form-group">
-						<label for="date_issue" class="col-sm-3 control-label">Date Issue:</label>
+						<label for="date_issue" class="col-sm-3 control-label">Date Issue</label>
 						<div class="col-sm-9">
 							<div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="date_issue" data-link-format="yyyy-mm-dd">
 								<input class="form-control" size="16" type="text" value="{{date('d F, Y', strtotime($student->date_issue))}}" readonly>
@@ -143,7 +147,7 @@
 
 					<div class="form-group top-spacing ident-field" >
 						
-						<label for="ident_image" class=" control-label col-sm-3">Change Identify Image:</label>
+						<label for="ident_image" class=" control-label col-sm-3">Change Identify Image</label>
 						<div class="col-sm-9">
 							<input type="file" id="ident_file" name="ident_image" class="filestyle" data-buttonText="Find file">
 						</div>
@@ -157,7 +161,7 @@
 					</div>
 
 					<div class="form-group "> 
-						<label for="work_place" class=" control-label col-sm-3">Work Place:</label> 
+						<label for="work_place" class=" control-label col-sm-3">Work Place</label> 
 						<div class="col-sm-9">
 							<select name="work_place_id" class="form-control" id="work_place">
 								@if($student->work_place == 0)
@@ -172,7 +176,7 @@
 
 					</div>
 					<div class="form-group "> 
-						<label for="exam_place" class=" control-label col-sm-3">Exam Place:</label> 
+						<label for="exam_place" class=" control-label col-sm-3">Exam Place</label> 
 						<div class="col-sm-9">
 							<select name="exam_place_id" class="form-control" id="exam_place">
 								<option value="0">Tai truong</option>
@@ -182,7 +186,7 @@
 
 					</div>
 					<div class="form-group "> 
-						<label for="practice_opt" class=" control-label col-sm-3">Practice Option:</label>
+						<label for="practice_opt" class=" control-label col-sm-3">Practice Option</label>
 						<div class="col-sm-9"> 
 							<select name="practice_opt" class="form-control" id="practice_opt">
 								@if($student->practice_opt == 0)
@@ -197,7 +201,7 @@
 
 					</div>
 					<div class="form-group "> 
-						<label for="payment_status" class=" control-label col-sm-3">Payment Status:</label>
+						<label for="payment_status" class=" control-label col-sm-3">Payment Status</label>
 						<div class="col-sm-9">
 							<select name="payment_status" class="form-control" id="payment_status">
 								@if($student->payment_status == 0)
@@ -212,7 +216,7 @@
 
 						</div>
 						<div class="form-group "> 
-							<label for="course_id" class=" control-label col-sm-3">Course:</label>
+							<label for="course_id" class=" control-label col-sm-3">Course</label>
 							<div class="col-sm-9">
 								<select class="form-control " id="course_id" name="course_id">
 									<option value="">Select Course</option>
@@ -224,7 +228,7 @@
 								
 						</div>
 						<div class="form-group "> 
-							<label for="expense" class=" control-label col-sm-3">Course Fee:</label> 
+							<label for="expense" class=" control-label col-sm-3">Course Fee</label> 
 							<div class="col-sm-9">
 								<input  type="number" id="expense" name="expense" class="form-control" value="{{$student->expense}}" min="0" max="1000000000" step="1" ></input>
 							</div>
@@ -251,6 +255,9 @@
 	@stop
 
 	@section('scripts')
+
+	<script type="text/javascript" src="{{asset('parsley/parsley.min.js')}}"></script>
+
 
 	{{--Date Picker  --}}
 	<script type="text/javascript" src="{{asset('date-picker/js/bootstrap-datetimepicker.js')}}" charset="UTF-8"></script>

@@ -1,6 +1,6 @@
-
-
 @extends('manage/main')
+
+@section('title','| Edit Course')
 
 @section('head')
 <link href="{{asset('date-picker/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
@@ -25,7 +25,7 @@
   </div>
   <div class="panel-body">
     <div class="col-md-12" style="margin: auto;">
-      <form method="POST" action="{{route('courses.update',$course->id)}}" class="form" data-parsley-validate>
+      <form method="POST" action="{{route('courses.update',$course->id)}}" class="form" data-parsley-validate data-parsley-ui-enabled="false">
         {{method_field('PUT')}}
         {{csrf_field()}}
         <div class="form-group">
