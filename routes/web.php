@@ -32,6 +32,14 @@ Route::prefix('dashboard')->group(function(){
 	Route::resource('roles', 'RoleController');
 
 	Route::resource('permissions', 'PermissionController');
+	//Certficate
+	Route::resource('/certificates', 'CertificateController'); 
+
+	//
+	Route::post('/getStudent', 'AjaxController@getStudent');
+
+	//
+
 
 	//Course
 	Route::resource('/courses', 'CourseController'); 

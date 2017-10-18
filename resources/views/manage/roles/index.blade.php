@@ -20,6 +20,7 @@
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Role</th>
                             <th>Permissions</th>
                             <th>Operation</th>
@@ -27,12 +28,14 @@
                     </thead>
 
                     <tbody>
+                        @php $stt = 1 @endphp
                         @foreach ($roles as $role)
-                        <tr>
 
+                        <tr>
+                            <td>{{$stt++}}</td>
                             <td>{{ $role->name }}</td>
 
-                            <td>{{  $role->permissions()->pluck('name')->implode(' ') }}</td>{{-- Retrieve array of permissions associated to a role and convert to string --}}
+                            <td>{{  $role->permissions()->pluck('name')->implode(', ') }}</td>{{-- Retrieve array of permissions associated to a role and convert to string --}}
                             <td>
                                  <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
 

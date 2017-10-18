@@ -20,12 +20,13 @@
 </div>
 <!-- /.box-header -->
 <div class="panel-body">
-  <table class="table table-striped">
+  <table class="table table-striped table-bordered">
     <tr>
-      <th>id</th>
+      <th>#</th>
       <th>Name</th>
       <th>Email</th>
-      <th></th>
+      <th>Created At</th>
+      <th>Modifed At</th>
       <th>Actions</th>
     </tr>
     @php $stt=1 @endphp
@@ -34,7 +35,8 @@
       <td>{{$stt++}}</td>
       <td>{{$student->name}}</td>
       <td>{{$student->email}}</td>
-      <td>{{-- {{$student->created_at->toFormatedDateString()}} --}}</td>
+      <td>{{$student->created_at->format('j/m/Y ') }}<br>{{ $student->created_at->format('H:i a ') }}</td>
+      <td>{{$student->updated_at->format('j/m/Y ') }}<br>{{ $student->updated_at->format('H:i a ') }}</td>
       <td>
 
         <a class="btn btn-info btn-sm " href="{{route('students.edit',$student->id)}}"><i class="fa fa-edit"></i> Edit</a>

@@ -9,13 +9,16 @@ use App\Tag;
 use App\Post; 
 use App\Menu;
 use App\Category;
+use App\Student;
 use Session;
 use Image;
 use Storage;
 use Illuminate\Support\Facades\Auth;
 
+
 class AjaxController extends Controller
-{
+{   
+
     public function __construct() {
       $this->middleware(['auth', 'clearance']);
     }
@@ -48,6 +51,24 @@ class AjaxController extends Controller
     	}
     	
 
+    }
+
+    public function getStudent(Request $request){
+
+        if ($request->ajax()){
+
+            
+            $html = [];
+            $i = 0;
+            $students = Student::where('course_id',$request->course_id)->get();
+            foreach($students as $student){
+
+                $html[$i++] = '<option value='.$student->id.'>'.$student->name.'</option>';
+
+            }
+            return response()->json(array('students'=>$html));
+        }
+        
     }
 
 }

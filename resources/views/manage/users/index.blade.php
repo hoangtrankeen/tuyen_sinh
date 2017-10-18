@@ -23,6 +23,7 @@
 
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Date/Time Added</th>
@@ -32,9 +33,10 @@
             </thead>
 
             <tbody>
+                 @php $stt = 1 @endphp
                 @foreach ($users as $user)
                 <tr>
-
+                    <td>{{$stt++}}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->created_at->format('d F, Y') }}</td>

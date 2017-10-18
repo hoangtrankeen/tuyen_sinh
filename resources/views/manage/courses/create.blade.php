@@ -24,13 +24,13 @@
 
 	</div>
 	<div class="panel-body">
-		<form method="POST" action="{{route('courses.store')}}" class="form" data-parsley-validate data-parsley-ui-enabled="false">>
+		<form method="POST" action="{{route('courses.store')}}" class="form" data-parsley-validate data-parsley-ui-enabled="false">
 			<div class="form-group">
-				<label name="name">Course Name:</label>
+				<label for="name">Course Name:</label>
 				<input id="name" name="name" class="form-control" data-parsley-required="true">
 			</div>
 			<div class="form-group">
-				<label name="year">Year:</label>
+				<label for="year">Year:</label>
 				<input type="number" id="year" name="year"  class="form-control" data-parsley-type="number" data-parsley-required="true"></input>
 			</div>
 			<div class="form-group">

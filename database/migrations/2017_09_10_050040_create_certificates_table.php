@@ -12,18 +12,19 @@ class CreateCertificatesTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {   
         Schema::create('certificates', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('student_id')->unsigned();
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
-            $table->string('test_point');
-            $table->string('practice_point');  
-            $table->string('cer_code');     //so hieu
-            $table->string('issue_code');   //so vao so cap chung chi
-            $table->dateTime('date_issue'); //ngay cap
-            $table->integer('courses_id');
+            $table->string('multi_choice');//trac nghiem
+            $table->string('practice');  //thuc hanh
+            $table->string('cer_code')->unique();     //so hieu
+            $table->string('issue_code')->unique();   //so vao so cap chung chi
+            $table->date('date_issue'); //ngay cap
+            $table->integer('course_id')->references('id')->on('courses')->onDelete('set null');
             $table->integer('created_by');
+            $table->boolean('status')->nullable();
             $table->timestamps();
         });
     }

@@ -19,9 +19,10 @@
 						</tr>
 					</thead>
 					<tbody>
+						 @php $stt = 1 @endphp
 						@foreach($tags as $tag)
 						<tr>
-							<td>{{ $tag->id }}</td>
+							<td>{{$stt++}}</td>
 							<td>{{ $tag->name}}</td>
 							<td>{{count($tag->posts)}}</td>
 							<td>

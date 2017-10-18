@@ -24,13 +24,16 @@
 
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Permissions</th>
                     <th>Operation</th>
                 </tr>
             </thead>
             <tbody>
+                @php $stt = 1 @endphp
                 @foreach ($permissions as $permission)
                 <tr>
+                    <td>{{$stt++}}</td>
                     <td>{{ $permission->name }}</td> 
                     <td>
                         <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>

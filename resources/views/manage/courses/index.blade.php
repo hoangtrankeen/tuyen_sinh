@@ -20,7 +20,7 @@
   </div>
   <!-- /.box-header -->
   <div class="panel-body">
-    <table class="table table-striped">
+    <table class="table table-striped table-bordered">
       <tr>
         <th>id</th>
         <th>Course Name</th>
@@ -35,8 +35,8 @@
         <td>{{$stt++}}</td>
         <td>{{$course->name}}</td>
         <td>{{$course->year}}</td>
-        <td>{{date('d F, Y', strtotime($course->exam_date))}}</td>
-        <td>{{$course->created_at->format('d F, Y')}}</td>
+        <td>{{$course->created_at->format('j/m/Y ') }}<br>{{ $course->created_at->format('H:i a ') }}</td>
+       
         <td>
           <a class="btn btn-info btn-sm " href="{{route('courses.edit',$course->id)}}"><i class="fa fa-edit"></i> Edit</a>
 

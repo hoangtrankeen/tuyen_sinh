@@ -19,7 +19,7 @@
 		
 		<table class="table table-success table-striped table-bordered">
 			<thead class="success">
-				<tr class="warning">
+				<tr class="">
 					<th>#</th>
 					<th>Title</th>
 					<th>Author</th>
@@ -36,7 +36,7 @@
 				@endphp
 				@foreach ($posts as $post)
 				<tr>
-					<th>{{ $stt++ }}</th>
+					<td>{{ $stt++ }}</td>
 					<td><a href="{{route('posts.edit',$post->id)}}">
 						{{ substr(strip_tags($post->title), 0, 100) }}{{ strlen(strip_tags($post->title)) > 100 ?'...':'' }}
 					</a><br>

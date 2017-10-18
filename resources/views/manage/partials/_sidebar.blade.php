@@ -42,6 +42,11 @@
           <i class="fa fa-th"></i> <span>Students</span>
         </a>
       </li>
+       <li>
+        <a href="{{route('certificates.create')}}">
+          <i class="fa fa-certificate" aria-hidden="true"></i> <span>Certificate</span>
+        </a>
+      </li>
       <li>
         <a href="{{route('menus.index')}}">
           <i class="fa fa-bars" aria-hidden="true"></i> <span>Menu</span>
