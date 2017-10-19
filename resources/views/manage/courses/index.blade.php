@@ -33,13 +33,13 @@
       @foreach ($courses as $course)
       <tr>
         <td>{{$stt++}}</td>
-        <td>{{$course->name}}</td>
+        <td><a href="{{route('courses.edit',$course->id)}}">{{$course->name}}</a></td>
         <td>{{$course->year}}</td>
+        <td>{{date('j/m/Y', strtotime($course->exam_date))}}</td>
         <td>{{$course->created_at->format('j/m/Y ') }}<br>{{ $course->created_at->format('H:i a ') }}</td>
-       
+        
         <td>
           <a class="btn btn-info btn-sm " href="{{route('courses.edit',$course->id)}}"><i class="fa fa-edit"></i> Edit</a>
-
           <form class="delete" action="{{ route('courses.destroy', $course->id) }}" method="POST">
             <input type="hidden" name="_method" value="DELETE">
             {{ csrf_field() }}

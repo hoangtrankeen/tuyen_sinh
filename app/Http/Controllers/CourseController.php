@@ -62,7 +62,7 @@ class CourseController extends Controller
         if($course->save()){
           Session::flash('success', 'The user was successfully created!');
           return  redirect()->route('courses.index',$course->id);
-      } else {
+        } else {
         return redirect()->route('courses.create');
     }
 }

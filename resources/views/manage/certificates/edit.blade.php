@@ -1,7 +1,7 @@
 
 @extends('manage/main')
 
-@section('title','| Create Certificate')
+@section('title','| Edit Certificate')
 
 @section('head')
 <link rel="stylesheet" type="text/css" href="{{asset('parsley/parsley.css')}}">
@@ -61,12 +61,12 @@
 					</div>
 					<div class="form-group">
 						<label for="date_issue" class=" control-label">Date Issue</label>
-						<div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="date_issue" data-link-format="yyyy-mm-dd">
+						<div class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="date_issue" data-link-format="yyyy-mm-dd">
 							<input class="form-control" size="16" type="text" value="{{date('j/m/Y', strtotime($certificate->date_issue))}}" readonly>
 							<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 						</div>
-						<input type="hidden" id="date_issue" value="{{$certificate->date_issue}}" name="date_issue" />
+						<input type="hidden" id="date_issue" value="{{date('j/m/Y', strtotime($certificate->date_issue))}}" name="date_issue" />
 					</div >
 				</div>
 
@@ -98,13 +98,17 @@
 		</div>
 	</div>		
 
-
-
-
-
 	@stop
 
 	@section('scripts')
+
+	
+	{{--Date Picker  --}}
+
+	<script type="text/javascript" src="{{asset('parsley/parsley.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('date-picker/js/bootstrap-datetimepicker.js')}}" charset="UTF-8"></script>
+	<script type="text/javascript" src="{{asset('date-picker/js/locales/bootstrap-datetimepicker.fr.js')}}" charset="UTF-8"></script>
+	<script type="text/javascript" src="{{asset('date-picker/index.js')}}"></script>
 
 	{{-- bind student data on chane select --}}
 	<script type="text/javascript">
@@ -134,11 +138,5 @@
 
 	</script>
 
-
-	{{--Date Picker  --}}
-
-	<script type="text/javascript" src="{{asset('parsley/parsley.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('date-picker/js/bootstrap-datetimepicker.js')}}" charset="UTF-8"></script>
-	<script type="text/javascript" src="{{asset('date-picker/js/locales/bootstrap-datetimepicker.fr.js')}}" charset="UTF-8"></script>
-	<script type="text/javascript" src="{{asset('date-picker/index.js')}}"></script>
+	
 	@stop

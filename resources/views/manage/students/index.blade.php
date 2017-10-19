@@ -33,7 +33,7 @@
     @foreach ($students as $student)
     <tr>
       <td>{{$stt++}}</td>
-      <td>{{$student->name}}</td>
+      <td><a href="{{route('students.edit',$student->id)}}">{{$student->name}}</a></td>
       <td>{{$student->email}}</td>
       <td>{{$student->created_at->format('j/m/Y ') }}<br>{{ $student->created_at->format('H:i a ') }}</td>
       <td>{{$student->updated_at->format('j/m/Y ') }}<br>{{ $student->updated_at->format('H:i a ') }}</td>

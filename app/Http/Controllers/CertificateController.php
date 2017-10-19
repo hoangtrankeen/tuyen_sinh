@@ -24,8 +24,9 @@ class CertificateController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        
+    {   
+        $certificates = Certificate::orderBy('id','desc')->paginate(10);
+        return view('manage/certificates/index')->withCertificates($certificates);
     }
 
     /**
@@ -58,7 +59,7 @@ class CertificateController extends Controller
             'practice'  => 'required',
             'cer_code'   => 'required|unique:certificates',
             'issue_code'  => 'required|unique:certificates',
-            'date_issue'   => 'required|date',
+            'date_issue'   => 'required',
           
 
           ]);
@@ -79,7 +80,7 @@ class CertificateController extends Controller
         $certificate->save();
 
         Session::flash('success', 'The certificate was successfully created!');
-        return  redirect()->route('certificates.create');
+        return  redirect()->route('certificates.index');
 
     }
 
@@ -128,7 +129,7 @@ class CertificateController extends Controller
             'practice'  => 'required',
             'cer_code'   => 'required|unique:certificates,cer_code,'.$id,
             'issue_code'  => 'required|unique:certificates,issue_code,'.$id,
-            'date_issue'   => 'required|date',
+            'date_issue'   => 'required',
           
 
           ]);
@@ -148,7 +149,7 @@ class CertificateController extends Controller
         $certificate->save();
 
         Session::flash('success', 'The certificate was successfully updated!');
-        return  redirect()->route('certificates.edit',$certificate->id);
+        return  redirect()->route('certificates.index');
     }
 
     /**
@@ -159,6 +160,9 @@ class CertificateController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $certificate = Certificate::find($id);
+        $certificate->delete();
+        Session::flash('success', 'The certificate was successfully deleted!');
+        return redirect()->route('certificates.index');
     }
 }

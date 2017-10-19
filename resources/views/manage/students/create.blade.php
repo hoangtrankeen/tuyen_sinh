@@ -52,7 +52,7 @@
 							<div class="form-group">
 								<label for="birth" class="col-sm-3 control-label">Birth*</label>
 								<div class="col-sm-9">
-									<div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="birth" data-link-format="yyyy-mm-dd">
+									<div class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="birth" data-link-format="dd/mm/yyyy">
 										<input class="form-control" size="16" type="text" value="" readonly>
 										<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 										<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -128,7 +128,7 @@
 					<div class="form-group">
 						<label for="date_issue" class="col-sm-3 control-label">Date Issue</label>
 						<div class="col-sm-9">
-							<div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="birth" data-link-format="yyyy-mm-dd">
+							<div class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="birth" data-link-format="dd/mm/yyyy">
 								<input class="form-control" size="16" type="text" value="" readonly>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>

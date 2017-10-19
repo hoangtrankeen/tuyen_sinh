@@ -43,7 +43,7 @@
         </a>
       </li>
        <li>
-        <a href="{{route('certificates.create')}}">
+        <a href="{{route('certificates.index')}}">
           <i class="fa fa-certificate" aria-hidden="true"></i> <span>Certificate</span>
         </a>
       </li>

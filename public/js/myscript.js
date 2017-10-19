@@ -45,9 +45,9 @@ function fileIdentStudent(input) {
 		        reader.readAsDataURL(input.files[0]);
 		    }
 		}
-$("#ident_file").change(function () {
-    fileIdentStudent(this);
-});
+// $("#ident_file").change(function () {
+//     fileIdentStudent(this);
+// });
 
 function fileProfileStudent(input) {
 		    if (input.files && input.files[0]) {

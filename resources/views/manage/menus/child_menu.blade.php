@@ -21,7 +21,7 @@
 				<button type="submit" onclick="return confirmDelete()" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
 			</form> 
 		</td>
-	</tr>
+</tr>
 	@if(count($child->childs))
 
 	@include('manage/menus/child_menu',['childs' => $child->childs, 'html' => $html])

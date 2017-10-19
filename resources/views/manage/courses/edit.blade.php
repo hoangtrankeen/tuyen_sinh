@@ -37,7 +37,7 @@
           <input type="number" id="year" name="year"  class="form-control" value="{{$course->year}}"  data-parsley-type="number"></input>
         </div>
         <div class="form-group">
-          <label for="exam_date" class="control-label">Exam Date:</label>
+           <label for="exam_date" class="control-label">Exam Date:</label>
           <div class="input-group date form_datetime" data-date="" data-date-format="dd MM yyyy - HH:ii" data-link-field="exam_date">
             <input class="form-control" size="16" type="text" value="{{date('d F, Y - H:i', strtotime($course->exam_date))}}" readonly>
             <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>

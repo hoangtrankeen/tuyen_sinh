@@ -14,8 +14,8 @@
 						<tr>
 							<th>#</th>
 							<th>Name</th>
-							<th class="text-center">Posts Relevent</th>
-							<th class="text-center " width="20%">Action</th>
+							<th>Posts Relevent</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -23,9 +23,9 @@
 						@foreach($tags as $tag)
 						<tr>
 							<td>{{$stt++}}</td>
-							<td>{{ $tag->id }}</td>
+					
 							<td>{{ $tag->name}}</td>
-							<td class="text-center">{{count($tag->posts)}}</td>
+							<td>{{count($tag->posts)}}</td>
 							<td>
 
 								<a class="btn btn-primary btn-sm" href="{{route('tags.edit',$tag->id)}}"><i class="fa fa-edit"></i> Edit</a>
@@ -44,7 +44,7 @@
 			
 		</div>	
 	</div> {{-- end 8 col --}}
-	<div class="col-md-3">
+	<div class="col-md-4">
 		<div class="well">
 			{!! Form::open(['route' => 'tags.store', 'method'=> 'POST'])!!}
 

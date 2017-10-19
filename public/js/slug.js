@@ -1,12 +1,12 @@
 ///Vue handle the slug
-	var vm = new Vue({
-		el: "#slug",
-		data:{
-			title:'',
-		},
-		computed:{
-			slugConvert: function (){
-				var tit, slug;
+var vm = new Vue({
+	el: "#slug",
+	data:{
+		title:'',
+	},
+	computed:{
+		slugConvert: function (){
+			var tit, slug;
 
 				    //Lấy text từ thẻ input title 
 				    tit = this.title;

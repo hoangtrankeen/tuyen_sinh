@@ -10,12 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-	return view('welcome');
-});
 
-// Route::get('/form', function () {
-// 	return view('auth/register2');
+Route::get('/', 'FrontEnd\FrontEndController@index');
+
+// Route::get('/', function () {
+// 	return view('frontend/main');
 // });
 
 
@@ -65,6 +64,9 @@ Route::prefix('dashboard')->group(function(){
 	// Return all posts that related to a Category
 	Route::get('postscat/{cat_id}','PostController@showPostsCat')->name('manage.postscat');
 
+// ------------------------------------------------------------------------------------------
+	//FrontEnd Manage
+	Route::resource('slider','FrontEnd\SliderController');
 
 });	
 
