@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="csrf-token" content="{{ csrf_token() }}" />
+<meta name="_token" content="{{ csrf_token() }}" />
 
 <title>Adminsitrator Section @yield('title')</title>
 
@@ -22,6 +22,9 @@
 
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
+
+ <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="{{asset('asset/plugins/iCheck/all.css')}}">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>

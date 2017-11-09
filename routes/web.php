@@ -11,21 +11,18 @@
 |
 */
 
-Route::get('/', 'FrontEnd\FrontEndController@index');
 
-// Route::get('/', function () {
-// 	return view('frontend/main');
-// });
 
 
 Auth::routes();
 
 // Route::prefix('dashboard')->middleware('role:superadministrator|administrator|editor|author|contributor|supporter|subscriber')->group(function(){
-Route::prefix('dashboard')->group(function(){
+Route::group(['prefix'	=> 'dashboard','middleware'=> ['auth', 'isAdmin']],function(){
+
 	Route::get('/', 'ManageController@index');
 
 	Route::get('/deny','ManageController@denypage');
-
+	
 	Route::resource('/users', 'UserController');
 	
 	Route::resource('roles', 'RoleController');
@@ -64,10 +61,28 @@ Route::prefix('dashboard')->group(function(){
 	// Return all posts that related to a Category
 	Route::get('postscat/{cat_id}','PostController@showPostsCat')->name('manage.postscat');
 
+
+	//Sections
+
+	Route::resource('sections','SectionController');
+
+	//Mailer
+
+	Route::get('/formmailer','MailController@index')->name('mailer');
+	Route::post('/sendemail','MailController@sendemail')->name("mailer.send");
+	Route::get('/getstudentemail','AjaxController@getStudentMail');
 // ------------------------------------------------------------------------------------------
 	//FrontEnd Manage
 	Route::resource('slider','FrontEnd\SliderController');
 
 });	
 
+
+
+
+//FrontEnd Pages
+
+Route::get('/', 'FrontEnd\FrontEndController@index');
+
+Route::get('/{slug}', 'FrontEnd\RouteController@getSlug')->name('route.slug');
 

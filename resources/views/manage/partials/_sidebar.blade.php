@@ -38,6 +38,11 @@
         </a>
       </li>
       <li>
+        <a href="{{route('mailer')}}">
+          <span class="glyphicon glyphicon-envelope"></span> <span>Mail</span>
+        </a>
+      </li>
+      <li>
         <a href="{{route('students.index')}}">
           <i class="fa fa-th"></i> <span>Students</span>
         </a>
@@ -65,6 +70,16 @@
       <li>
         <a href="{{route('tags.index')}}">
           <i class="fa fa-tags" aria-hidden="true"></i> <span>Tags</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{route('slider.create')}}">
+          <i class="fa fa-sitemap" aria-hidden="true"></i> <span>Slider</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{route('sections.index')}}">
+          <i class="fa fa-sitemap" aria-hidden="true"></i> <span>Sections</span>
         </a>
       </li>
     </ul>

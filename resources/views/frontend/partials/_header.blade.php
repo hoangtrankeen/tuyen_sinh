@@ -13,7 +13,7 @@
             </ul>
           </div>
         </div>
-        <div class="col-md-4 pr-0">
+        <div class="col-md-7 pr-0">
           <div class="widget">
             <ul class="styled-icons icon-sm pull-right flip sm-pull-none sm-text-center mt-5">
               <li><a href="#"><i class="fa fa-facebook text-white"></i></a></li>
@@ -24,14 +24,14 @@
             </ul>
           </div>
         </div>
-        <div class="col-md-3">
+        {{-- <div class="col-md-3">
           <ul class="list-inline sm-pull-none sm-text-center text-right text-white mb-sm-20 mt-10">
             <li class="m-0 pl-10"> <a href="ajax-load/login-form.html" class="text-white ajaxload-popup"><i class="fa fa-user-o mr-5 text-white"></i> Login /</a> </li>
             <li class="m-0 pl-0 pr-10">
               <a href="ajax-load/register-form.html" class="text-white ajaxload-popup"><i class="fa fa-edit mr-5"></i>Register</a>
             </li>
           </ul>
-        </div>
+        </div> --}}
       </div>
     </div>
   </div>
@@ -75,11 +75,11 @@
         <nav id="menuzord" class="menuzord default menuzord-responsive">
           <ul class="menuzord-menu">
             @foreach($parents as $parent)
-            <li class=""><a href="#home">{{$parent->name}}</a>
+            <li class=""><a href="{{route('route.slug',$parent->slug)}}">{{$parent->name}}</a>
               
               @if(count($parent->childs))
               
-              @include('frontend/partials/_submenu',['childs' => $parent->childs, 'html'=>''])
+              @include('frontend/partials/_submenu',['childs' => $parent->childs, 'html'=>'', 'path'=>$parent->slug])
               @endif
               
             </li>

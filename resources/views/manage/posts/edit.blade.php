@@ -2,15 +2,10 @@
 
 @section('title','| Edit Blog')
 
-
 @section ('head')
-
-
-
-{{-- Editor --}}
 <!-- Include Editor style. -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+<link href="{{asset('froala_editor/css/froala_editor.pkgd.min.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('froala_editor/css/froala_style.min.css')}}" rel="stylesheet" type="text/css" />
 
 @stop
 
@@ -45,7 +40,7 @@
 				</div>
 				
 
-				<div class="form-group " style="width: 97%">
+				<div class="form-group " style="width: 100%">
 					{{ Form::label('tags', 'Tags:', ['class'=>'top-spacing'])}} 
 					{{ Form::select('tags[]', $tags, null, ['class'=>'form-control select2-multi full_width','multiple' => 'multiple'])}}
 				</div>
@@ -82,7 +77,7 @@
 				</div>
 			</div>
 			<div class="box-body">
-				<select name="is_published" id="" class="form-control">
+				<select name="is_published" id="is_published" class="form-control">
 					<option value="0"  {{($post->is_published == 0) ? 'selected':''}}>Disable</option>
 					<option value="1"  {{($post->is_published == 1) ? 'selected':''}}>Activated</option>
 				</select>
@@ -100,7 +95,7 @@
 			</div>
 			<div class="box-body">
 				<select name="is_featured" id="" class="form-control">
-					<option value="0"  {{($post->is_featured == 0) ? 'selected':''}} >No</option>
+					<option value="0"  {{($post->is_featured == 0) ? 'selected':''}}>No</option>
 					<option value="1"  {{($post->is_featured == 1) ? 'selected':''}}>Yes</option>
 				</select>
 			</div>
@@ -174,8 +169,9 @@
 
 @section('scripts')
 
+
 <!-- Include Editor JS files. -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.0/js/froala_editor.pkgd.min.js"></script>
+<script type="text/javascript" src="{{asset('froala_editor/js/froala_editor.pkgd.min.js')}}"></script>
 
 
 {{-- filestyle --}}

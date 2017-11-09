@@ -19,8 +19,9 @@ use Illuminate\Support\Facades\Auth;
 class AjaxController extends Controller
 {   
 
-    public function __construct() {
+    public function __construct( Request $request) {
       $this->middleware(['auth', 'clearance']);
+      $this->request = $request;
     }
     
     public function searchPost(Request $request){
@@ -39,7 +40,7 @@ class AjaxController extends Controller
 
     }
     public function bindMenu(Request $data){
-
+            
     	if($data->parent_id !== null){
     		$menu = Menu::select('name', 'id')->where('id',$data->parent_id)->first();
 
@@ -49,8 +50,6 @@ class AjaxController extends Controller
             // dd($total); 
     		return response()->json(array('menu'=>$menu, 'total'=>$total));
     	}
-    	
-
     }
 
     public function getStudent(Request $request){
@@ -69,6 +68,18 @@ class AjaxController extends Controller
             return response()->json(array('students'=>$html));
         }
         
+    }
+    public function getStudentMail(){
+        // dd($this->request->course_id);
+        if($this->request->course == 'all'){
+            $students = Student::all();
+        }else
+        {
+           $course_id = $this->request->course;
+           $students = Student::where('course_id',$course_id)->get();
+        }    
+        $html = view('manage/mailer/bindingemail')->withStudents($students)->render();
+        return   response()->json(['html'=>$html]);
     }
 
 }

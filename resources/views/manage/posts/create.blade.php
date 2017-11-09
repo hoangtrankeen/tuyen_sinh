@@ -6,12 +6,9 @@
 
 <link rel="stylesheet" href="http://parsleyjs.org/src/parsley.css">
 
-
-
-{{-- Editor --}}
 <!-- Include Editor style. -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+<link href="{{asset('froala_editor/css/froala_editor.pkgd.min.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('froala_editor/css/froala_style.min.css')}}" rel="stylesheet" type="text/css" />
 
 @stop
 
@@ -184,9 +181,9 @@ enctype="multipart/form-data">
 
 @section('scripts')
 <script src="{{asset('js/slug.js')}}"></script>
-{{-- Editor --}}
+
 <!-- Include Editor JS files. -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.0/js/froala_editor.pkgd.min.js"></script>
+<script type="text/javascript" src="{{asset('froala_editor/js/froala_editor.pkgd.min.js')}}"></script>
 
 {{-- File Style --}}
 <script type="text/javascript" src="{{asset('filestyle/js/bootstrap-filestyle.min.js')}}"></script>
@@ -208,5 +205,6 @@ enctype="multipart/form-data">
 
 <script type="text/javascript">
 	$('.select2-multi').select2();
+	
 </script>
 @stop	

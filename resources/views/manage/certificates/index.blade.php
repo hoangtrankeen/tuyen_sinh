@@ -32,13 +32,12 @@
       @php $stt = 1 @endphp
       @foreach ($certificates as $certificate)
       <tr>
-
         <td>{{$stt++}}</td>
         <td><a href="{{route('certificates.edit',$certificate->id)}}">{{$certificate->student->name}}</a></td>
-        <td>{{$certificate->course->name}}</td>
-        <td>{{$certificate->created_at->format('j/m/Y ') }}<br>{{ $certificate->created_at->format('H:i a ') }}</td>
-        <td>{{$certificate->updated_at->format('j/m/Y ') }}<br>{{ $certificate->updated_at->format('H:i a ') }}</td>
-       
+        <td></td>
+        <td>{{$certificate->created_at->format('j/m/Y ')}}<br>{{ $certificate->created_at->format('H:i a ') }}</td>
+        <td>{{$certificate->updated_at->format('j/m/Y ')}}<br>{{ $certificate->updated_at->format('H:i a ') }}</td>
+
         <td>
           <a class="btn btn-info btn-sm " href="{{route('certificates.edit',$certificate->id)}}"><i class="fa fa-edit"></i> Edit</a>
 
@@ -53,6 +52,7 @@
 
       @endforeach
     </table>
+    {{$certificates->links()}}
   </div>
   <!-- /.box-body -->
 
@@ -63,9 +63,9 @@
 @stop      
 
 @section('scripts')
-  
+
 <script>
-    function confirmDelete()
+  function confirmDelete()
   {
     return confirm("Do you want to delete this certificate?");
   }

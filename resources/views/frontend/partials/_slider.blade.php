@@ -7,14 +7,24 @@
    			<!-- START REVOLUTION SLIDER 5.0.7 fullwidth mode -->
    			<div id="rev_slider_home" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.0.7">
    				<ul>
+                  @php  
+                     $rs = 0; 
+
+
+                  @endphp
    					<!-- SLIDE 1 -->
-   					<li data-index="rs-1" data-transition="fade" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="{{asset('frontend/images/bg/bg1.jpg')}}" data-rotate="0"  data-fstransition="fade" data-saveperformance="off" data-title="Web Show" data-description="">
+                  @foreach($sliders as $slider)
+                  @php
+                      $rs++;
+                  @endphp
+
+   					<li data-index="rs-{{$rs}}" data-transition="fade" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="{{asset('manage_image/slider/'.$slider->image)}}" data-rotate="0"  data-fstransition="fade" data-saveperformance="off" data-title="Web Show" data-description="">
    						<!-- MAIN IMAGE -->
-   						<img src="{{asset('frontend/images/bg/bg1.jpg')}}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+   						<img src="{{asset('manage_image/slider/'.$slider->image)}}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
    						<!-- LAYERS -->
    						<!-- LAYER NR. 1 -->
    						<div class="tp-caption tp-shape tp-shapewrapper tp-resizeme rs-parallaxlevel-0 bg-theme-colored-transparent-4"
-   						id="slide-1-layer-1"
+   						id="slide-{{$rs}}-layer-1"
    						data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
    						data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
    						data-width="full"
@@ -30,7 +40,7 @@
    					</div>
    					<!-- LAYER NR. 2 -->
    					<div class="tp-caption tp-resizeme rs-parallaxlevel-0 text-white text-uppercase font-roboto-slab font-weight-700"
-   					id="slide-1-layer-2"
+   					id="slide-{{$rs}}-layer-2"
    					data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
    					data-y="['top','top','top','top']" data-voffset="['195','195','160','170']"
    					data-fontsize="['58','48','42','36']"
@@ -49,11 +59,12 @@
    					data-splitin="none"
    					data-splitout="none"
    					data-responsive_offset="on"
-   					style="z-index: 5; white-space: nowrap; font-weight:700;">Best <span class="text-theme-colored2">Online</span> Course
+   					{{-- style="z-index: 5; white-space: nowrap; font-weight:700;">Best <span class="text-theme-colored2">Online</span> Course --}}
+                  style="z-index: 5; white-space: nowrap; font-weight:700;">{{$slider->title}}<span class="text-theme-colored2"></span> 
    				</div>
    				<!-- LAYER NR. 3 -->
    				<div class="tp-caption tp-resizeme text-white rs-parallaxlevel-0"
-   				id="slide-1-layer-3"
+   				id="slide-{{$rs}}-layer-3"
    				data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
    				data-y="['top','top','top','top']" data-voffset="['275','260','220','220']"
    				data-fontsize="['16','16',18',16']"
@@ -72,11 +83,11 @@
    				data-splitin="none"
    				data-splitout="none"
    				data-responsive_offset="on"
-   				style="z-index: 5; white-space: nowrap;">We provides always our best educational services for our all students <br> and  always try to achieve our students trust and satisfaction
+   				style="z-index: 5; white-space: nowrap;">{{-- {{$slider->description}} --}}
    			</div>
    			<!-- LAYER NR. 4 -->
    			<div class="tp-caption rs-parallaxlevel-0"
-   			id="slide-1-layer-4"
+   			id="slide-{{$rs}}-layer-4"
    			data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
    			data-y="['top','top','top','top']" data-voffset="['350','330','290','290']"
    			data-width="none"
@@ -96,8 +107,8 @@
    			style="z-index: 5; white-space: nowrap; letter-spacing:1px;"><a class="btn btn-theme-colored2 btn-lg btn-flat text-white font-weight-600 pl-30 pr-30 mr-15" href="#">Our Service</a>
    		</div>
    	</li>
-
-   	<!-- SLIDE 2 -->
+   @endforeach
+  {{--  	<!-- SLIDE 2 -->
    	<li data-index="rs-2" data-transition="fade" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="{{asset('frontend/images/bg/bg2.jpg')}}" data-rotate="0"  data-fstransition="fade" data-saveperformance="off" data-title="Web Show" data-description="">
    		<!-- MAIN IMAGE -->
    		<img src="{{asset('frontend/images/bg/bg2.jpg')}}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
@@ -279,7 +290,7 @@ style="z-index: 5; white-space: nowrap; letter-spacing:1px;"><a class="btn btn-t
 </ul>
 <div class="tp-bannertimer tp-bottom" style="height: 5px; background-color: rgba(255, 255, 255, 0.2);"></div>
 </div>
-</div>
+</div> --}}
 
 <!-- END REVOLUTION SLIDER -->
 <script type="text/javascript">

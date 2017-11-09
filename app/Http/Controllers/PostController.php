@@ -159,6 +159,7 @@ class PostController extends Controller
         $post->slug = $request->slug;
         $post->category_id = $request->category_id;
         $post->is_featured = $request->is_featured;
+        $post->is_published = $request->is_published;
         $post->body = $request->body;
         $post->layout_id = $request->layout_id;
         $post->created_by =$user_id; 
